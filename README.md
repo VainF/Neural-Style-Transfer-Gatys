@@ -8,7 +8,15 @@ This is a Tensorflow implementation of the paper [A Neural Algorithm of Artistic
 
 <div>
 <img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/content_img.jpg" width="284.8" height="189.6">
-<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/out_2600.jpg" width="284.8" height="189.6">
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/out_3000.jpg" width="284.8" height="189.6">
 <img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/style_img.jpg" width="284.8" height="189.6">
+<\div> 
+    
+
+
+<div>
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/zju.jpg" width="50%" height="50%">
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/starry.jpg" width="50%" height="50%">
 <\div>
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/zju_5000.png" width="100%" height="100%">
 
