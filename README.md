@@ -6,10 +6,9 @@ This is a Tensorflow implementation of the paper [A Neural Algorithm of Artistic
 * The pretrained VGG19 model comes from this [repo](https://github.com/machrisaa/tensorflow-vgg).  
 * Some implementations are inspired by [Neural Transfer with PyTorch](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html)  
 
-![style](https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/style_img.jpg)  
-
-![content](https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/content_img.jpg)  
-
-![output](https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/out_2600.jpg)
-
+<div>
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/content_img.jpg" width="284.8" height="189.6">
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/out_2600.jpg" width="284.8" height="189.6">
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/style_img.jpg" width="284.8" height="189.6">
+<\div>
 
