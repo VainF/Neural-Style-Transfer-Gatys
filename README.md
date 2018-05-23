@@ -19,8 +19,8 @@ View the code for more details about arguments.
 <img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/style_img.jpg" width="284.8" height="189.6">
     
 
-<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/zju.jpg" width="49%" height="49%">
-<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/starry.jpg" width="49%" height="49%">
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/zju.jpg" width="48.9%" height="48.9%">
+<img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/starry.jpg" width="48.9%" height="48.9%">
 
 <img src="https://github.com/VainF/Neural-Style-Transfer-Gatys/blob/master/img/zju_5000.png" width="98%" height="98%">
 </div>
