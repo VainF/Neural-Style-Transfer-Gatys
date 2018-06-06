@@ -72,6 +72,7 @@ def main():
     parser.add_argument('--lr_rate',type=float, default=1,help='Learning rate')
     parser.add_argument('--epoch',type=int, default=3000,help='Epoch number')
     parser.add_argument('--style_weight',type=float, default=10000,help='trade-off between content and style')
+    parser.add_argument('--content_weight',type=float, default=1,help='trade-off between content and style')
 
     args = parser.parse_args()
 
@@ -81,14 +82,13 @@ def main():
     style_img = Image.open(args.style_img).resize((img_width,img_height))
 
     input_img = copy.copy(content_img)
+#    plt.title('Content Image')
+#    plt.imshow(content_img)
+#    plt.pause(1)
 
-    plt.title('Content Image')
-    plt.imshow(content_img)
-    plt.pause(1)
-
-    plt.title('Style Image')
-    plt.imshow(style_img)
-    plt.pause(1)
+#    plt.title('Style Image')
+#    plt.imshow(style_img)
+#    plt.pause(1)
 
     vgg_input =  tf.Variable(initial_value=np.zeros(shape=[1, img_height, img_width, 3],dtype='float32'),name='image') 
 
@@ -126,32 +126,28 @@ def main():
             maps_vec = tf.transpose(maps,perm=(0,3,1,2))
             a,b,c,d = maps_vec.shape
             maps_vec = tf.reshape(maps_vec,(a*b,c*d))
-            return tf.matmul(maps_vec, maps_vec,transpose_b=True)
+            return 1/(2* int(a*b*c*d) ) * tf.matmul(maps_vec, maps_vec,transpose_b=True)
         else:
             maps_vec = np.array(maps).transpose((0,3,1,2))
-            print(maps_vec.shape)
             a,b,c,d = maps_vec.shape
             maps_vec = maps_vec.reshape(a*b,c*d)
-            print(maps_vec.shape)
-            print()
-            return np.matmul(maps_vec,maps_vec.T)
+            return 1/(2*(a*b*c*d) ) * np.matmul(maps_vec,maps_vec.T)
 
     # Input
     content_maps = tf.constant(content_maps_out,dtype='float32')
     style_maps = [tf.constant(gram_matrix(style_maps_out[i]),dtype='float32') for i in range(len(style_maps_out)) ]
 
-    def _cal_squaredNM(m):
-        m_shape = m.get_shape().as_list()
-        return 4*(m_shape[0]*m_shape[1])**2
+    #def _cal_squaredNM(m):
+    #    m_shape = m.get_shape().as_list()
+    #    return 4*(m_shape[0]*m_shape[1])**2
 
-    style_weights = [0.2/_cal_squaredNM(style_maps[0]),0.2/_cal_squaredNM(style_maps[1]),0.2/_cal_squaredNM(style_maps[1]), \
-            0.2/_cal_squaredNM(style_maps[3]),0.2/_cal_squaredNM(style_maps[4])]   
+    style_weights = [0.2,0.2,0.2,0.2,0.2]   
     img_styles = [conv1_1, conv2_1, conv3_1, conv4_1, conv5_1]
 
     def mse(x,y):
         return tf.losses.mean_squared_error(labels=y,predictions=x)
 
-    loss_content = mse(conv4_2,content_maps)
+    loss_content = args.content_weight*mse(conv4_2,content_maps)
     loss_style = args.style_weight*(style_weights[0]*mse(gram_matrix(conv1_1),style_maps[0]) + \
                                     style_weights[1]*mse(gram_matrix(conv2_1),style_maps[1]) + \
                                     style_weights[2]*mse(gram_matrix(conv3_1),style_maps[2]) + \
@@ -173,7 +169,8 @@ def main():
             saved_img = np.where(saved_img<=255,saved_img,255)
             saved_img = np.where(saved_img>=0,saved_img,0)
             saved_img = Image.fromarray(saved_img.astype(np.uint8),'RGB')
-            saved_img.save(args.output+'_%d'%(ep)+'.jpg')
-            print("[!] image saved")
+            output_name = args.output+'_%d'%(ep)+'.jpg'
+            saved_img.save(output_name)
+            print("[!] image saved as %s\n"%output_name)
 if __name__=='__main__':
     main()
