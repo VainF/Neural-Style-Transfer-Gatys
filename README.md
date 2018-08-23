@@ -3,7 +3,7 @@ This is a Tensorflow implementation of the paper [A Neural Algorithm of Artistic
 
 ### Some details
 
-* The pretrained VGG19 model comes from this [repo](https://github.com/machrisaa/tensorflow-vgg).  
+* The pretrained VGG19 model comes from this [repo](https://github.com/machrisaa/tensorflow-vgg). [(Download pretrained VGG19)](https://mega.nz/#!xZ8glS6J!MAnE91ND_WyfZ_8mvkuSa2YcA7q-1ehfSm-Q1fxOvvs)
 * Some implementations are inspired by [Neural Transfer with PyTorch](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html)  
 
 ### Quick Start
